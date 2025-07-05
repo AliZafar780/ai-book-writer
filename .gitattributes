@@ -1,2 +1,23 @@
-# Auto detect text files and perform LF normalization
+# Treat all text files as UTF-8
 * text=auto
+
+# Normalize line endings for text files
+*.py text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.ui text eol=lf
+*.json text eol=lf
+*.csv text eol=lf
+
+# Treat binary file properly
+*.pdf binary
+
+# Set linguist language overrides if needed
+*.ui linguist-language=XML
+*.qrc linguist-language=XML
+
+# Export-ignore for GitHub archives
+.gitattributes export-ignore
+.gitignore export-ignore
+README.md export-ignore
+LICENSE export-ignore
