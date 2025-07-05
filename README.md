@@ -14,11 +14,11 @@
 🎯 I'm a **self-driven builder**, blending software with creativity.  
 💬 Fluent in Python, poetry, and problems that need real-world solutions.  
 🛠️ Currently building:
-- A **custom real-time AI firewall** with GUI using PyQt6
-- A **minimalist writing tool** for authors and poets
+- A **custom real-time AI firewall** with GUI using PyQt6  
+- A **minimalist writing tool** for authors & poets → [AI Book Writer](https://github.com/AliZafar780/ai-book-writer)  
 - An **AI assistant** to support judiciary workflows in Pakistan
 
-> 💭 _"Curiosity didn’t kill me — it built me."_  
+> 💭 _"Curiosity didn’t kill me — it built me."_
 
 ---
 
@@ -33,6 +33,7 @@
 - 🧠 Learn more about ethical hacking and AI safety  
 - 💡 Launch tools that matter, not just impress  
 - 🌙 Keep nights for silence, poetry, and purpose  
+
 </details>
 
 ---
@@ -68,8 +69,8 @@
 ## 📈 GitHub Stats
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=YourUsername&show_icons=true&theme=radical" width="45%"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=YourUsername&layout=compact&theme=radical" width="45%"/>
+  <img src="https://github-readme-stats.vercel.app/api?username=AliZafar780&show_icons=true&theme=radical" width="45%"/>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=AliZafar780&layout=compact&theme=radical" width="45%"/>
 </p>
 
 ---
@@ -77,14 +78,15 @@
 ## 🔗 Connect With Me
 
 <p align="center">
-  <a href="https://twitter.com/yourhandle" target="_blank">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/twitter.svg" width="35" height="35" />
-  </a>&nbsp;&nbsp;
-  <a href="https://www.instagram.com/yourhandle" target="_blank">
+  <a href="https://www.instagram.com/alizafar_69/" target="_blank">
     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/instagram.svg" width="35" height="35" />
   </a>&nbsp;&nbsp;
-  <a href="https://linkedin.com/in/yourhandle" target="_blank">
+  <a href="https://www.linkedin.com/in/ali-zafar-557989201" target="_blank">
     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/linkedin.svg" width="35" height="35" />
+  </a>&nbsp;&nbsp;
+  <!-- Twitter link placeholder -->
+  <a href="#" target="_blank">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/twitter.svg" width="35" height="35" />
   </a>
 </p>
 
@@ -109,10 +111,10 @@
 </p>
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=YourUsername&color=blue" alt="profile views" />
+  <img src="https://komarev.com/ghpvc/?username=AliZafar780&color=blue" alt="profile views" />
 </p>
 
 ---
 
 📅 **Last Updated:** `July 5, 2025`  
-🖊️ **Author:** [Ali Zafar](https://github.com/YourUsername)
+🖊️ **Author:** [Ali Zafar](https://github.com/AliZafar780)
