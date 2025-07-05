@@ -1,89 +1,118 @@
-# 👋 Welcome, Fellow Explorer! 🙋🏻‍♂️
+<h1 align="center">Hey there, I'm Ali Zafar 👋</h1>
+<p align="center">
+  🚀 A curious mind crafting stories in code and ink — one idea at a time.
+</p>
 
-### I'm Ali Zafar — a creative technologist, passionate writer, and full-time learner.
-
-📍 Based in Pakistan | 🧠 Curiosity is my fuel | 🛠️ Building ideas that breathe
-
----
-
-## 🌟 About Me
-
-🚀 **Journeying Through**: Tinkering with real-time system protection, PyQt6 GUIs, and building AI assistants for law, writing & cybersecurity.  
-💬 **What I Love**: Blending code with creativity — whether it's writing a firewall or writing a ghazal.  
-🧠 **Current Obsessions**:  
-- Building a smart AI Firewall System (yes, real-time detection & GUI-based magic!)  
-- Writing tools for creators — because every writer deserves a clean canvas.  
-- Exploring the boundaries of AI, ethics, and automation.
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com/?lines=System+Builder+⚙️;Poetry+Lover+📖;AI+Tinkerer+🧠;PyQt6+Dev+💻;Always+Learning+🚀&center=true&width=500&height=45">
+</p>
 
 ---
 
-## 📚 Challenges I'm Tackling
+## 💡 About Me
+
+🎯 I'm a **self-driven builder**, blending software with creativity.  
+💬 Fluent in Python, poetry, and problems that need real-world solutions.  
+🛠️ Currently building:
+- A **custom real-time AI firewall** with GUI using PyQt6
+- A **minimalist writing tool** for authors and poets
+- An **AI assistant** to support judiciary workflows in Pakistan
+
+> 💭 _"Curiosity didn’t kill me — it built me."_  
+
+---
+
+## 🚀 Current Missions
 
 <details>
-  <summary>What I'm pushing myself to do lately</summary>
-  <ul>
-    <li>Learn something new every day (no excuses!)</li>
-    <li>Code at least 2-3 hours/day — deep work, zero distractions</li>
-    <li>Build complete tools that solve real-world problems</li>
-    <li>Stay minimalist, think maximalist</li>
-  </ul>
+<summary>Tap to see my ongoing quests 🌱</summary>
+<br>
+
+- ⏳ Write code that lasts longer than trends  
+- ✍️ Journal and write daily (digital & ink)  
+- 🧠 Learn more about ethical hacking and AI safety  
+- 💡 Launch tools that matter, not just impress  
+- 🌙 Keep nights for silence, poetry, and purpose  
 </details>
 
 ---
 
-## 💻 Tech Stack
+## 🛠️ Tech Toolbox
+
+<div align="center">
 
 ![Python](https://img.shields.io/badge/-Python-05122A?style=for-the-badge&logo=python)
 ![PyQt6](https://img.shields.io/badge/-PyQt6-41CD52?style=for-the-badge&logo=qt&logoColor=white)
 ![Linux](https://img.shields.io/badge/-Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![Scapy](https://img.shields.io/badge/-Scapy-3776AB?style=for-the-badge&logo=python)
 ![Bash](https://img.shields.io/badge/-Bash-1f1f1f?style=for-the-badge&logo=gnubash)
-![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=for-the-badge&logo=html5)
 ![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=for-the-badge&logo=css3)
+![Markdown](https://img.shields.io/badge/-Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white)
+
+</div>
 
 ---
 
-## 📦 Featured Projects
+## 🌟 Featured Projects
 
-| Project        | Description                                           | Status      |
-|----------------|-------------------------------------------------------|-------------|
-| 🔥 AI Firewall | A real-time custom firewall with PyQt6 GUI            | 🚧 Building |
-| ✍️ BookWriter  | A distraction-free desktop app for writers & poets    | ✅ Ready    |
-| 🧠 LawAI Tool  | AI-powered legal assistant for the Pakistani judiciary | 🔬 In R&D   |
+| 💼 Project        | 🔍 Description                                           | 📌 Status     |
+|------------------|----------------------------------------------------------|---------------|
+| 🔥 AI Firewall    | Real-time GUI-based smart firewall for threat detection  | 🛠️ In Dev      |
+| ✍️ BookWriter     | Desktop writing tool for authors & poets                 | ✅ Stable      |
+| ⚖️ LawAI Toolkit  | Legal assistant for Pakistan's judiciary (AI-powered)    | 🧪 R&D Phase   |
+| 🧠 Zero-Day Lab   | Experimental AI security tools & research                | ⚙️ Ongoing     |
 
 ---
 
 ## 📈 GitHub Stats
 
-![Ali's GitHub stats](https://github-readme-stats.vercel.app/api?username=yourusername&show_icons=true&theme=radical)
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=yourusername&layout=compact&theme=radical)
-
----
-
-## 🎧 Fun Bits
-
-<details>
-  <summary>What inspires me besides code?</summary>
-  <ul>
-    <li>📖 Ghazals & Urdu poetry — because language can be just as elegant as code</li>
-    <li>🎶 Lo-fi + rain playlists during deep work sessions</li>
-    <li>📸 Capturing silence through photography</li>
-  </ul>
-</details>
-
----
-
-## 🔗 Let’s Connect
-
-<p align="left">
-  <a href="https://twitter.com/yourhandle" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/twitter.svg" height="30" width="30" /></a>&nbsp;
-  <a href="https://www.linkedin.com/in/yourhandle" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg" height="30" width="30" /></a>&nbsp;
-  <a href="https://www.instagram.com/yourhandle" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/instagram.svg" height="30" width="30" /></a>&nbsp;
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=YourUsername&show_icons=true&theme=radical" width="45%"/>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=YourUsername&layout=compact&theme=radical" width="45%"/>
 </p>
 
 ---
 
-🌟 *"Code what you feel. Write what you fear."*  
-📅 Last updated: `2025-07-05`
+## 🔗 Connect With Me
 
-> ⭐ Do star this profile if you found something inspiring — it keeps creators creating.
+<p align="center">
+  <a href="https://twitter.com/yourhandle" target="_blank">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/twitter.svg" width="35" height="35" />
+  </a>&nbsp;&nbsp;
+  <a href="https://www.instagram.com/yourhandle" target="_blank">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/instagram.svg" width="35" height="35" />
+  </a>&nbsp;&nbsp;
+  <a href="https://linkedin.com/in/yourhandle" target="_blank">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/linkedin.svg" width="35" height="35" />
+  </a>
+</p>
 
+---
+
+## 🎧 Dev Quote of the Day
+
+<p align="center">
+  <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" />
+</p>
+
+---
+
+## 🧠 Fun Fact
+
+> _“Some nights I debug code. Some nights I decode people. Some nights I write poems. And some nights... I just observe.”_
+
+---
+
+<p align="center">
+  ⭐️ If you liked this profile, consider giving it a star — it might just make my day!
+</p>
+
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=YourUsername&color=blue" alt="profile views" />
+</p>
+
+---
+
+📅 **Last Updated:** `July 5, 2025`  
+🖊️ **Author:** [Ali Zafar](https://github.com/YourUsername)
