@@ -28,12 +28,61 @@ A full-featured desktop application powered by Google Gemini AI that allows you 
 
 ---
 
-## ⚙️ Installation
+## ⚙️ Setup & Usage (Everything You Need)
 
-> Requires **Python 3.8+**
-
-### 🔹 Step 1: Clone the Repo
+To get started, clone the repository, set up a virtual environment, install dependencies, and run the app. Everything you need is listed below.
 
 ```bash
+# Clone the repository
 git clone https://github.com/AliZafar780/ai-book-writer
 cd ai-book-writer
+
+# Create and activate a virtual environment (Recommended)
+python -m venv venv
+
+# On Windows
+venv\Scripts\activate
+
+# On macOS/Linux
+source venv/bin/activate
+
+# Install required Python packages
+pip install -r requirements.txt
+
+# OR install them manually
+pip install google-generativeai reportlab
+
+# Launch the app
+python ai_writer.py
+Once the app launches:
+
+Paste your Gemini API Key
+
+Fill in the Book Title, Author Name, Genre, Writing Tone, and Key Plot Points
+
+Set the number of pages
+
+Enable or disable auto-generated chapter/section headings
+
+Click "Generate New Book"
+
+Edit the content directly in the built-in editor
+
+When satisfied, click "Save as PDF" to export
+
+🧪 requirements.txt
+Your requirements.txt file should include the following:
+
+Copy
+Edit
+google-generativeai
+reportlab
+📁 Folder Structure
+bash
+Copy
+Edit
+ai-book-writer/
+├── ai_writer.py           # Main GUI Application
+├── requirements.txt       # Python dependencies
+├── README.md              # Project documentation
+└── output/                # (Optional) Folder for exported PDFs
