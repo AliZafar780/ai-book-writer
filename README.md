@@ -1,2 +1,30 @@
-# ai-book-writer
-BookWriter is a simple yet powerful tool designed to help writers, poets, and storytellers plan, write, and organize their books with ease. Whether you're drafting your first novel, scripting a short story, or collecting poetic fragments, BookWriter keeps your creativity structured and flowing.  ✍️ Features 🗂️ Chapter-wise organization and auto-saving  🧠 Idea board to jot down random inspirations  🔤 Grammar-friendly, distraction-free editor  💾 Save, export (PDF, TXT), and version control  🌙 Dark/light mode toggle for comfort  🔧 Built With Python / PyQt6 (for GUI)  Markdown support (for writing and formatting)  💡 Ideal For: Writers, authors, poets, content creators, and anyone with a story to tell.
+✍️ BookWriter – A Lightweight Tool for Authors and Creators
+BookWriter is a clean, focused writing environment built for novelists, poets, and storytellers. Whether you're planning a long novel, crafting chapters, or jotting down poetic thoughts, BookWriter helps you stay organized and inspired.
+
+Built with Python and PyQt6, it offers a user-friendly interface designed to reduce distractions and improve your creative flow.
+
+🔧 Features:
+🗂️ Chapter-wise Structure – Easily manage and switch between chapters or scenes.
+
+💡 Idea Board – Quickly save random ideas, lines, or plot twists.
+
+📝 Distraction-Free Editor – Simple editor focused on writing, with clean typography.
+
+💾 Auto-Save & Manual Export – Save your progress locally or export as .txt or .pdf.
+
+🌙 Dark Mode – Write day or night without straining your eyes.
+
+🕰️ Version-friendly – Track progress or roll back with Git integration.
+
+🧠 Why Use BookWriter?
+Unlike heavy writing software, BookWriter keeps things minimal. It's perfect for writers who just want a reliable space to write, brainstorm, and manage their book without getting lost in menus.
+
+🚀 Getting Started:
+Clone the repo, run the main Python file, and you're ready to write.
+
+bash
+Copy
+Edit
+git clone https://github.com/AliZafar780/ai-book-writer.git
+cd bookwriter
+python main.py
