@@ -1,88 +1,80 @@
-# ✍️ AI Book Writer – Z-BOT Suite v2.0
+# ✍️ AI Book Writer - Z-BOT Suite v2.0
 
-A full-featured desktop application powered by Google Gemini AI that allows you to generate entire books page-by-page with plot direction, editing, and PDF export — all inside a beautiful Python GUI built with Tkinter.
+> A full-featured desktop application powered by Google Gemini AI that allows you to generate entire books page-by-page with plot direction, editing, and PDF export
 
----
-
-## 🚀 Features
-
-- 🧠 Gemini 1.5 Flash-powered text generation
-- 🖼️ Tkinter-based GUI — no terminal mess
-- ✍️ Define book title, genre, tone, and key plot points
-- 📄 Auto-generates optional chapter and section headings
-- 🔁 Regenerate individual pages if needed
-- 📝 Edit content before finalizing
-- 📤 Export book as a styled, clean PDF using ReportLab
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.8+-blue?style=flat&logo=python" alt="Python" />
+  <img src="https://img.shields.io/badge/GUI-Tkinter-green?style=flat" alt="Tkinter" />
+  <img src="https://img.shields.io/badge/AI-Gemini-orange?style=flat&logo=google" alt="Gemini" />
+  <img src="https://img.shields.io/badge/License-MIT-blue?style=flat" alt="License" />
+</p>
 
 ---
 
-## 🧰 Tech Stack
+## ✨ Features
 
-| Tool                  | Purpose                        |
-|-----------------------|--------------------------------|
-| Python                | Programming language           |
-| Tkinter               | GUI framework                  |
-| google-generativeai   | Access to Gemini 1.5 Flash API |
-| ReportLab             | PDF generation                 |
-| Threading             | Async content generation       |
+| Feature | Description |
+|:--------|:------------|
+| 🧠 **Gemini AI** | Powered by Google Gemini 1.5 Flash |
+| 🖼️ **Tkinter GUI** | Beautiful Python GUI |
+| ✍️ **Book Generation** | Define title, genre, tone, plot points |
+| 📄 **Auto Headings** | Optional chapter/section headings |
+| 🔁 **Regeneration** | Regenerate individual pages |
+| 📝 **Edit Content** | Edit before finalizing |
+| 📤 **PDF Export** | Export as styled PDF |
 
----
-
-## ⚙️ Setup & Usage (Everything You Need)
-
-To get started, clone the repository, set up a virtual environment, install dependencies, and run the app. Everything you need is listed below.
+## 🚀 Quick Start
 
 ```bash
 # Clone the repository
-git clone https://github.com/AliZafar780/ai-book-writer
+git clone https://github.com/AliZafar780/ai-book-writer.git
 cd ai-book-writer
 
-# Create and activate a virtual environment (Recommended)
-python -m venv venv
-
-# On Windows
-venv\Scripts\activate
-
-# On macOS/Linux
-source venv/bin/activate
-
-# Install required Python packages
+# Install dependencies
 pip install -r requirements.txt
 
-# OR install them manually
-pip install google-generativeai reportlab
+# Run the application
+python main.py
+```
 
-# Launch the app
-python ai_writer.py
-Once the app launches:
+## 🛠️ Tech Stack
 
-Paste your Gemini API Key
+| Tool | Purpose |
+|:-----|:--------|
+| Python | Programming language |
+| Tkinter | GUI framework |
+| google-generativeai | Gemini 1.5 Flash API |
+| ReportLab | PDF generation |
+| Threading | Async content generation |
 
-Fill in the Book Title, Author Name, Genre, Writing Tone, and Key Plot Points
+## 📋 Requirements
 
-Set the number of pages
+- Python 3.8+
+- Google Gemini API key
+- Internet connection
 
-Enable or disable auto-generated chapter/section headings
+## ⚙️ Configuration
 
-Click "Generate New Book"
+Set your API key in the app or as environment variable:
+```bash
+export GEMINI_API_KEY=your_api_key
+```
 
-Edit the content directly in the built-in editor
+## 📁 Project Structure
 
-When satisfied, click "Save as PDF" to export
-
-🧪 requirements.txt
-Your requirements.txt file should include the following:
-
-Copy
-Edit
-google-generativeai
-reportlab
-📁 Folder Structure
-bash
-Copy
-Edit
+```
 ai-book-writer/
-├── ai_writer.py           # Main GUI Application
-├── requirements.txt       # Python dependencies
-├── README.md              # Project documentation
-└── output/                # (Optional) Folder for exported PDFs
+├── main.py            # Main application
+├── book_generator.py  # AI generation logic
+├── gui.py            # Tkinter interface
+├── pdf_exporter.py   # PDF generation
+└── requirements.txt  # Dependencies
+```
+
+## 📜 License
+
+MIT License
+
+---
+
+*Write your story with AI 📖*
