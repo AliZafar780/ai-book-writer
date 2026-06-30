@@ -1,0 +1,2 @@
+google-generativeai>=0.8.0
+reportlab>=4.2.0

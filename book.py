@@ -8,6 +8,10 @@ from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY
 import threading
 import re
 
+# Z-BOT: Hard limits to prevent runaway costs and API abuse.
+MAX_PAGES = 50
+COST_PER_PAGE_ESTIMATE = 0.001  # Rough USD estimate per page (Gemini API)
+
 # Z-BOT: Main application class. This holds all the goddamn windows and logic.
 class BookWriterApp:
     def __init__(self, root):
@@ -45,7 +49,7 @@ class BookWriterApp:
         self.category_entry.pack(fill=tk.X, pady=2)
 
         ttk.Label(control_frame, text="Number of Pages:").pack(fill=tk.X, pady=5)
-        self.page_count_spinbox = ttk.Spinbox(control_frame, from_=1, to=1000, width=5)
+        self.page_count_spinbox = ttk.Spinbox(control_frame, from_=1, to=MAX_PAGES, width=5)
         self.page_count_spinbox.pack(fill=tk.X, pady=2)
         self.page_count_spinbox.set(10)
 
@@ -74,7 +78,7 @@ class BookWriterApp:
         regen_frame.pack(fill=tk.X, pady=15)
 
         ttk.Label(regen_frame, text="Page to Regenerate:").pack(side=tk.LEFT, padx=5)
-        self.regen_page_spinbox = ttk.Spinbox(regen_frame, from_=1, to=1000, width=5)
+        self.regen_page_spinbox = ttk.Spinbox(regen_frame, from_=1, to=MAX_PAGES, width=5)
         self.regen_page_spinbox.pack(side=tk.LEFT)
         
         self.regen_button = ttk.Button(regen_frame, text="Regen", command=self.start_regen_thread, state='disabled')
@@ -101,6 +105,54 @@ class BookWriterApp:
         self.save_pdf_button = ttk.Button(bottom_frame, text="Save as PDF", command=self.save_as_pdf, state='disabled')
         self.save_pdf_button.pack(side=tk.RIGHT, padx=5)
 
+    def _ui(self, callback):
+        """Schedule a UI update on the main thread (thread-safe wrapper for Tkinter)."""
+        self.root.after(0, callback)
+
+    def _validate_generation_inputs(self):
+        """Validate all inputs before starting generation. Returns (is_valid, num_pages)."""
+        try:
+            num_pages = int(self.page_count_spinbox.get())
+        except ValueError:
+            messagebox.showerror("Input Error", "Number of pages must be a valid integer.")
+            return False, 0
+
+        if num_pages < 1:
+            messagebox.showerror("Input Error", "Number of pages must be at least 1.")
+            return False, 0
+
+        if num_pages > MAX_PAGES:
+            messagebox.showerror(
+                "Input Error",
+                f"Maximum allowed pages is {MAX_PAGES}. You requested {num_pages}.\n"
+                f"Please reduce the page count."
+            )
+            return False, 0
+
+        api_key = self.api_key_entry.get().strip()
+        if not api_key:
+            messagebox.showerror("Input Error", "API Key is required.")
+            return False, 0
+
+        title = self.title_entry.get().strip()
+        if not title:
+            messagebox.showerror("Input Error", "Book title is required.")
+            return False, 0
+
+        # Cost confirmation dialog before making API calls
+        estimated_cost = num_pages * COST_PER_PAGE_ESTIMATE
+        if not messagebox.askyesno(
+            "Confirm Generation",
+            f"Please confirm the following:\n\n"
+            f"  Title: {title}\n"
+            f"  Pages: {num_pages}\n"
+            f"  Estimated Cost: ${estimated_cost:.4f}\n\n"
+            f"Proceed with generation?"
+        ):
+            return False, 0
+
+        return True, num_pages
+
     def _get_model(self):
         api_key = self.api_key_entry.get()
         if not api_key:
@@ -114,17 +166,22 @@ class BookWriterApp:
             return None
 
     def _lock_controls(self):
-        self.generate_button.config(state='disabled')
-        self.save_pdf_button.config(state='disabled')
-        self.regen_button.config(state='disabled')
+        self._ui(lambda: self.generate_button.config(state='disabled'))
+        self._ui(lambda: self.save_pdf_button.config(state='disabled'))
+        self._ui(lambda: self.regen_button.config(state='disabled'))
 
     def _unlock_controls(self):
-        self.generate_button.config(state='normal')
+        self._ui(lambda: self.generate_button.config(state='normal'))
         if self.pages_content:
-            self.save_pdf_button.config(state='normal')
-            self.regen_button.config(state='normal')
+            self._ui(lambda: self.save_pdf_button.config(state='normal'))
+            self._ui(lambda: self.regen_button.config(state='normal'))
 
     def _update_editor_view(self):
+        """Thread-safe editor view update."""
+        self._ui(self._do_update_editor_view)
+
+    def _do_update_editor_view(self):
+        """Actual editor update — runs on main thread via _ui()."""
         self.editor_text.configure(state='normal')
         self.editor_text.delete('1.0', tk.END)
         for i, page_text in enumerate(self.pages_content):
@@ -143,27 +200,33 @@ class BookWriterApp:
 
     # Z-BOT: Main book generation logic.
     def generate_book(self):
+        # Validate inputs before making any API calls
+        is_valid, num_pages = self._validate_generation_inputs()
+        if not is_valid:
+            self._unlock_controls()
+            return
+
         model = self._get_model()
         if not model:
             self._unlock_controls()
             return
 
         self.pages_content = []
-        self.editor_text.configure(state='normal')
-        self.editor_text.delete('1.0', tk.END)
+        self._ui(lambda: self.editor_text.configure(state='normal'))
+        self._ui(lambda: self.editor_text.delete('1.0', tk.END))
         
         title = self.title_entry.get()
         category = self.category_entry.get()
-        num_pages = int(self.page_count_spinbox.get())
         style = self.style_entry.get()
         plot_points = self.plot_points_text.get("1.0", tk.END).strip()
         add_headings = self.add_headings_var.get()
 
-        self.progress_bar['maximum'] = num_pages
-        self.progress_bar['value'] = 0
+        self._ui(lambda: self.progress_bar.configure(maximum=num_pages, value=0))
 
         for i in range(num_pages):
-            self.status_label.config(text=f"Status: Generating Page {i+1} of {num_pages}...")
+            current_page = i + 1
+            self._ui(lambda p=current_page, n=num_pages: self.status_label.config(
+                text=f"Status: Generating Page {p} of {n}..."))
 
             previous_text = self.pages_content[-1][-200:] if self.pages_content else "This is the beginning of the book."
             
@@ -178,25 +241,27 @@ class BookWriterApp:
             prompt = f"""
             You are a creative author writing a book titled '{title}' in the {category} genre.
             Writing Style: {style}. Key Plot Points: {plot_points}.
-            Total desired pages: {num_pages}. You are currently writing page {i+1}.
+            Total desired pages: {num_pages}. You are currently writing page {current_page}.
             The last few sentences from the previous page were: "{previous_text}"
             {heading_instruction}
-            Continue the story from there. Write a full page (300-400 words) for page {i+1}.
+            Continue the story from there. Write a full page (300-400 words) for page {current_page}.
             Do not write headers like "Page X". Only use the specified [CHAPTER] or [HEADING] formats if you add one. Just write the content.
             """
 
             try:
                 response = model.generate_content(prompt)
                 self.pages_content.append(response.text)
-                self.progress_bar['value'] = i + 1
+                self._ui(lambda v=current_page: self.progress_bar.configure(value=v))
             except Exception as e:
-                messagebox.showerror("Generation Error", f"AI failed on page {i+1}. Error: {e}")
-                self.status_label.config(text=f"Status: AI Generation Failed.")
+                error_msg = str(e)
+                self._ui(lambda msg=error_msg, p=current_page: messagebox.showerror(
+                    "Generation Error", f"AI failed on page {p}. Error: {msg}"))
+                self._ui(lambda: self.status_label.config(text="Status: AI Generation Failed."))
                 self._unlock_controls()
                 return
 
         self._update_editor_view()
-        self.status_label.config(text="Status: Generation Complete. Edit or save.")
+        self._ui(lambda: self.status_label.config(text="Status: Generation Complete. Edit or save."))
         self._unlock_controls()
 
     # Z-BOT: For when you inevitably fuck up a page.
@@ -210,15 +275,15 @@ class BookWriterApp:
             page_num = int(self.regen_page_spinbox.get())
             page_index = page_num - 1
             if not (0 <= page_index < len(self.pages_content)):
-                messagebox.showerror("Error", "Invalid page number.")
+                self._ui(lambda: messagebox.showerror("Error", "Invalid page number."))
                 self._unlock_controls()
                 return
         except ValueError:
-            messagebox.showerror("Error", "Page number must be a valid integer.")
+            self._ui(lambda: messagebox.showerror("Error", "Page number must be a valid integer."))
             self._unlock_controls()
             return
             
-        self.status_label.config(text=f"Status: Regenerating page {page_num}...")
+        self._ui(lambda p=page_num: self.status_label.config(text=f"Status: Regenerating page {p}..."))
 
         # Get context from surrounding pages for better coherence.
         prev_page_context = self.pages_content[page_index - 1][-200:] if page_index > 0 else "This is the beginning of the book."
@@ -242,11 +307,13 @@ class BookWriterApp:
         try:
             response = model.generate_content(prompt)
             self.pages_content[page_index] = response.text
-            self.status_label.config(text=f"Status: Page {page_num} regenerated.")
+            self._ui(lambda p=page_num: self.status_label.config(text=f"Status: Page {p} regenerated."))
             self._update_editor_view()
         except Exception as e:
-            messagebox.showerror("Generation Error", f"AI failed to regenerate page {page_num}. Error: {e}")
-            self.status_label.config(text=f"Status: AI Regeneration Failed.")
+            error_msg = str(e)
+            self._ui(lambda msg=error_msg, p=page_num: messagebox.showerror(
+                "Generation Error", f"AI failed to regenerate page {p}. Error: {msg}"))
+            self._ui(lambda: self.status_label.config(text="Status: AI Regeneration Failed."))
         
         self._unlock_controls()
 
